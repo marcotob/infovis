@@ -3,13 +3,13 @@ var config = readFileJson().config
 
 
 //Cambia effettivamente la posizione della zanzara
-function changePosition(config) {
+function changePosition() {
     console.log("changePosition");
-    console.log("setPosition(idConf).x: " + setPosition(idConf).x);
-    console.log("setPosition(idConf).y: " + setPosition(idConf).y);
+    console.log("changePosition/setPosition().x: " + setPosition().x);
+    console.log("changePosition/setPosition().y: " + setPosition().y);
     d3.select("#mosquito")
         .transition()  
-        .attr("transform", "translate(" + setPosition(idConf).x + "," + setPosition(idConf).y + ")")
+        .attr("transform", "translate(" + setPosition().x + "," + setPosition().y + ")")
 
     
 };
@@ -22,15 +22,17 @@ function animate(){
         } else {
             idConf +=1
         }
-        changePosition(idConf)
+    console.log("idConf: " + idConf);
+    changePosition();
 }
 
+//muove tutte le posizioni -> TODO: passare id per muovere solo nella posizione specifica
 function play() {
     console.log("play");
-    for (var i=0; i<9; i++) {
-        setTimeout(animate, 1000*i);
-    }
-    i=0                          
+    //for (var i=0; i<9; i++) {
+        setTimeout(animate, 1000);//*i);
+    //}
+    //i=0                          
 }
 
 
@@ -43,8 +45,11 @@ function move(){
 
 
 //Disegnare la prima posizione
-function drawmosquito(idConf){
+function drawmosquito(){
     console.log("drawmosquito");
+    console.log("drawmosquito/setPosition().x: " + setPosition().x);
+    console.log("drawmosquito/setPosition().y: " + setPosition().y);
+
     console.log("idConf: " + idConf);
     var svg= d3.select("svg")
         svg.append("svg:image")
@@ -53,7 +58,7 @@ function drawmosquito(idConf){
 		.attr("width", 100)
 		.attr("height", 100)
 		.attr("orientation", 0)
-        .attr("transform", "translate("+setPosition(idConf).x+","+setPosition(idConf).y+") rotate(0)")
+        .attr("transform", "translate("+setPosition().x+","+setPosition().y+") rotate(0)")
 
 }
 
@@ -68,8 +73,8 @@ function removeButton() {
 function start() {
     console.log("start");
     removeButton();
-    drawmosquito(idConf)
-    move()
+    drawmosquito();
+    move();
 }
 
 
@@ -93,13 +98,10 @@ function readFileJson(){
 }
 
 
-function setPosition(idConf) {
+function setPosition() {
     console.log("setPosition");
     console.log("idConf: " + idConf);
     var pos = config[idConf]
     return { x: eval(pos.x), y: eval(pos.y)}
-
-
-
     
 }
