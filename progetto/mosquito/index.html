@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Mosquito</title>
-	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-	<meta content="utf-8" http-equiv="encoding">
-	<object id="silhouette" data="./src/silhouette.svg" type="image/svg+xml"></object>
-    <script src="lib/d3.v6.min.js"></script>
-</head>
-<body>
-<script src="js/move_mosqy.js"></script>
-</body>
+<html lang="it" style="width: 100%; height: 100%">
+    <head>
+        <meta charset="utf-8">
+        <title>Mosquito</title>
+        <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+        <link href="mosquitostyle.css" rel="stylesheet">
+        <script src="d3/d3.min.js"></script>
+        <script src="mosquito.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body>
+        <header>
+            <h1>Mosquito</h1>
+        </header>
+        <button type="button" style="background-color:#111f63; border-color:#111f63; color:white" onclick="start()" id="button">Crazy Mosquito</button>
+        <svg width="100%"  height="100%" >
+            <g id="svg">
+               <rect x="0" y="0" width="100%" fill= "white" height="100%"></rect>
+            </g>
+        </svg>
+        <footer> Marco Macale </footer>
+    </body>
 </html>
