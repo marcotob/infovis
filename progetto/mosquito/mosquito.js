@@ -17,7 +17,7 @@ function changePosition() {
 
 function animate(){   
     console.log("animate");                     
-    if (idConf===10) {
+    if (idConf===9) {
             idConf = 0
         } else {
             idConf +=1
@@ -49,7 +49,6 @@ function drawmosquito(){
     console.log("drawmosquito");
     console.log("drawmosquito/setPosition().x: " + setPosition().x);
     console.log("drawmosquito/setPosition().y: " + setPosition().y);
-
     console.log("idConf: " + idConf);
     var svg= d3.select("svg")
         svg.append("svg:image")
@@ -101,6 +100,10 @@ function readFileJson(){
 function setPosition() {
     console.log("setPosition");
     console.log("idConf: " + idConf);
+    //for (var i=0; i<9; i++) {
+    //    console.log("i: " + i);
+    //    console.log("config[i]" + config[i].x + " "+ config[i].x);
+    //}
     var pos = config[idConf]
     return { x: eval(pos.x), y: eval(pos.y)}
     
