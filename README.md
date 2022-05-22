@@ -19,6 +19,8 @@ che dipende dalla tua interfaccia.
 
 Esecuzione: python -m SimpleHTTPServer [porta]
 
+Testato con Google Chrome Version 99.0.4844.74 (Official Build) (x86_64)
+
 =======================================================
 
 
