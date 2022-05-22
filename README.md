@@ -24,5 +24,7 @@ Testato con Google Chrome Version 99.0.4844.74 (Official Build) (x86_64)
 =======================================================
 
 
-https://user-images.githubusercontent.com/6899326/169647004-70e02476-3095-491f-acc4-fe877ef541b6.mov
+
+
+https://user-images.githubusercontent.com/6899326/169683729-3a80f53d-dad7-4057-ba6b-46685e0ef4e5.mov
 
