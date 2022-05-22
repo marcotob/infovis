@@ -1,6 +1,11 @@
 var idConf = 0
 var config = readFileJson().config
 
+var margin = {top: 5, right: 5, bottom: 3, left: 3}; 
+var width = 800 - margin.left - margin.right;
+var height = 300 - margin.top - margin.bottom;
+
+
 
 //Cambia effettivamente la posizione della zanzara in avanti
 function changePosition() {
@@ -129,9 +134,28 @@ function readFileJson(){
 }
 
 
+//Scale della coordinata x
+var xScale = d3.scaleLinear();  
+xScale.domain([0,500]); 
+xScale.range([0,width]); 
+
+//Scale della coordinata y
+var yScale = d3.scaleLinear();
+yScale.domain([0,500]);
+yScale.range([0, height]);
+
+//imposta cordinate x e y
 function setPosition() {
     console.log("setPosition");
     console.log("idConf: " + idConf);
     var pos = config[idConf]
-    return { x: eval(pos.x), y: eval(pos.y)}
+    //console.log("eval(pos.x): " + eval(pos.x));
+    //console.log("eval(pos.y): " + eval(pos.y));
+    console.log("xScale(eval(pos.x))): " + xScale(eval(pos.x)));
+    console.log("yScale(eval(pos.y))): " + yScale(eval(pos.y)));
+    return { x: xScale(eval(pos.x)), y: yScale(eval(pos.y))}
 }
+
+
+
+
