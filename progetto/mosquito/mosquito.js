@@ -2,7 +2,7 @@ var idConf = 0
 var config = readFileJson().config
 
 
-//Cambia effettivamente la posizione della zanzara
+//Cambia effettivamente la posizione della zanzara in avanti
 function changePosition() {
     console.log("changePosition");
     console.log("changePosition/setPosition().x: " + setPosition().x);
@@ -14,6 +14,7 @@ function changePosition() {
     
 };
 
+//Cambia effettivamente la posizione della zanzara indietro
 function backChangePosition() {
     console.log("backChangePosition");
     console.log("backChangePosition/setPosition().x: " + setPosition().x);
@@ -25,6 +26,7 @@ function backChangePosition() {
     
 };
 
+//gestisco ciclicità idConf in avanti
 function animate(){   
     console.log("animate");                     
     if (idConf===9) {
@@ -36,6 +38,7 @@ function animate(){
     changePosition();
 }
 
+//gestisco ciclicità idConf indietro
 function backAnimate(){   
     console.log("backAnimate");                     
     if (idConf===0) {
@@ -47,29 +50,25 @@ function backAnimate(){
     backChangePosition();
 }
 
-//muove tutte le posizioni -> TODO: passare id per muovere solo nella posizione specifica
+//muove avanti con un ritardo
 function play() {
     console.log("play");
-    //for (var i=0; i<9; i++) {
-        setTimeout(animate, 1000);//*i);
-    //}
-    //i=0                          
+        setTimeout(animate, 1000);                         
 }
 
+//muove indietro con un ritardo
 function backPlay() {
     console.log("backPlay");
-    //for (var i=0; i<9; i++) {
-        setTimeout(backAnimate, 1000);//*i);
-    //}
-    //i=0                          
+        setTimeout(backAnimate, 1000);                       
 }
 
-//Cambia la posizione della zanzara al click                  
+//intercetta sx click                  
 function move(){
     console.log("move");
     document.querySelector("#svg").addEventListener("click", play);
 }
 
+//intercetta dx click                  
 function backMove(){
     console.log("backMove");
     document.querySelector("#svg").addEventListener("contextmenu", backPlay);
@@ -133,11 +132,6 @@ function readFileJson(){
 function setPosition() {
     console.log("setPosition");
     console.log("idConf: " + idConf);
-    //for (var i=0; i<9; i++) {
-    //    console.log("i: " + i);
-    //    console.log("config[i]" + config[i].x + " "+ config[i].x);
-    //}
     var pos = config[idConf]
     return { x: eval(pos.x), y: eval(pos.y)}
-    
 }
