@@ -14,6 +14,16 @@ function changePosition() {
     
 };
 
+function backChangePosition() {
+    console.log("backChangePosition");
+    console.log("backChangePosition/setPosition().x: " + setPosition().x);
+    console.log("backChangePosition/setPosition().y: " + setPosition().y);
+    d3.select("#mosquito")
+        .transition()  
+        .attr("transform", "translate(" + setPosition().x + "," + setPosition().y + ")")
+
+    
+};
 
 function animate(){   
     console.log("animate");                     
@@ -26,6 +36,17 @@ function animate(){
     changePosition();
 }
 
+function backAnimate(){   
+    console.log("backAnimate");                     
+    if (idConf===0) {
+            idConf = 9
+        } else {
+            idConf -=1
+        }
+    console.log("idConf: " + idConf);
+    backChangePosition();
+}
+
 //muove tutte le posizioni -> TODO: passare id per muovere solo nella posizione specifica
 function play() {
     console.log("play");
@@ -35,6 +56,13 @@ function play() {
     //i=0                          
 }
 
+function backPlay() {
+    console.log("backPlay");
+    //for (var i=0; i<9; i++) {
+        setTimeout(backAnimate, 1000);//*i);
+    //}
+    //i=0                          
+}
 
 //Cambia la posizione della zanzara al click                  
 function move(){
@@ -42,6 +70,10 @@ function move(){
     document.querySelector("#svg").addEventListener("click", play);
 }
 
+function backMove(){
+    console.log("backMove");
+    document.querySelector("#svg").addEventListener("contextmenu", backPlay);
+}
 
 
 //Disegnare la prima posizione
@@ -74,6 +106,7 @@ function start() {
     removeButton();
     drawmosquito();
     move();
+    backMove();
 }
 
 
