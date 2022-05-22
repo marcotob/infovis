@@ -6,4 +6,6 @@ Crea un file json con dei dati multivariati: ci sono 10 data-cases e ogni data-c
 
 Esecuzione: python -m SimpleHTTPServer [porta]
 
+Testato con Google Chrome Version 99.0.4844.74 (Official Build) (x86_64)
+
 =======================================================
