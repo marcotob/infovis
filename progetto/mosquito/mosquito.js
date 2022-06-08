@@ -58,13 +58,13 @@ function backAnimate(){
 //muove avanti con un ritardo
 function play() {
     console.log("play");
-        setTimeout(animate, 1000);                         
+        setTimeout(animate, 1);                         
 }
 
 //muove indietro con un ritardo
 function backPlay() {
     console.log("backPlay");
-        setTimeout(backAnimate, 1000);                       
+        setTimeout(backAnimate, 1);                       
 }
 
 //intercetta sx click                  
@@ -135,13 +135,19 @@ function readFileJson(){
 
 
 //Scale della coordinata x
-var xScale = d3.scaleLinear();  
-xScale.domain([0,500]); 
+var xScale = d3.scaleLinear();
+//xScale.domain([0,500);  
+xScale.domain([0,Math.max(...config.map(o => o.x))]); 
 xScale.range([0,width]); 
+
+
+//console.log("MAX X " + Math.max(...config.map(o => o.x)));
+//console.log("MAX Y " + Math.max(...config.map(o => o.y)));
 
 //Scale della coordinata y
 var yScale = d3.scaleLinear();
-yScale.domain([0,500]);
+//yScale.domain([0,500]);
+yScale.domain([0,Math.max(...config.map(o => o.y))]);
 yScale.range([0, height]);
 
 //imposta cordinate x e y
